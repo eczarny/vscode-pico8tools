@@ -1,0 +1,78 @@
+{
+	"name": "vscode-pico8tools",
+	"displayName": "PICO-8 Tools",
+	"description": "PICO-8 tools for VS Code",
+	"version": "0.0.1",
+	"publisher": "eczarny",
+	"repository": "",
+	"engines": {
+		"vscode": "^1.34.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:pico8tools.run"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "pico8tools.run",
+				"title": "Run a PICO-8 file"
+			}
+		],
+		"configuration": {
+			"title": "PICO-8",
+			"properties": {
+				"pico8tools.pico8Path": {
+					"type": "string",
+					"default": "default",
+					"markdownDescription": "Path to the PICO-8 executable. Use `default` to use the default path for your platform."
+				},
+				"pico8tools.additionalArguments": {
+					"type": "string",
+					"default": "",
+					"description": "Additional arguments to provide to PICO-8."
+				}
+			}
+		},
+		"grammars": [
+			{
+				"language": "pico8",
+				"scopeName": "source.p8",
+				"path": "./syntaxes/pico8.tmLanguage.json",
+				"embeddedLanguages": {
+					"meta.embedded.block.lua": "lua"
+				}
+			}
+		],
+		"languages": [
+			{
+				"id": "pico8",
+				"extensions": [
+					".p8"
+				],
+				"aliases": [
+					"PICO-8",
+					"p8"
+				],
+				"filenames": [],
+				"firstLine": "^pico-8 cartridge.+",
+				"configuration": "./language-configuration.json"
+			}
+		]
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"lint": "tslint -p ./",
+		"watch": "tsc -watch -p ./"
+	},
+	"devDependencies": {
+		"@types/node": "^10.14.17",
+		"@types/vscode": "^1.34.0",
+		"tslint": "^5.16.0",
+		"typescript": "^3.5.1"
+	}
+}

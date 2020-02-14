@@ -1,0 +1,54 @@
+{
+    "name": "PICO-8",
+    "scopeName": "source.p8",
+    "patterns": [
+        {
+            "name": "comment",
+            "match": "^pico-8 cartridge.+$"
+        },
+        {
+            "name": "comment",
+            "match": "^version.+$"
+        },
+        {
+            "name": "meta.embedded.block.lua",
+            "begin": "^__lua__$",
+            "end": "(?=__)",
+            "patterns": [
+                {
+                    "include": "source.lua"
+                }
+            ]
+        },
+        {
+            "name": "comment",
+            "begin": "^__gfx__$",
+            "end": "(?=__)"
+        },
+        {
+            "name": "comment",
+            "begin": "^__gff__$",
+            "end": "(?=__)"
+        },
+        {
+            "name": "comment",
+            "begin": "^__label__$",
+            "end": "(?=__)"
+        },
+        {
+            "name": "comment",
+            "begin": "^__map__$",
+            "end": "(?=__)"
+        },
+        {
+            "name": "comment",
+            "begin": "^__sfx__$",
+            "end": "(?=__)"
+        },
+        {
+            "name": "comment",
+            "begin": "^__music__$",
+            "end": "(?=__)"
+        }
+    ]
+}
